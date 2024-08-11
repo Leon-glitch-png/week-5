@@ -6,6 +6,9 @@ const { SECRET } = require("../middleware/auth")
 const { authenticateJwt } = require("../middleware/auth");
 
 const router = express.Router();
+router.get("/",(req, res)=>{
+  res.send("Welcome to the API");
+})
 
 router.get("/me", authenticateJwt, async (req, res) => {
     const admin = await Admin.findOne({ username: req.user.username });
